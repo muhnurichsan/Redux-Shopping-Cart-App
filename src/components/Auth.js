@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import "./Auth.css";
 import { authActions } from "../store/slices/auth-slice";
+import "./Auth.css";
 
 const Auth = () => {
   const [username, setUsername] = useState("");
@@ -17,6 +17,8 @@ const Auth = () => {
     console.log(password);
   };
   const handleSubmit = (e) => {
+    // e.preventDefault();
+    // dispatch(authActions.login());
     e.preventDefault();
     if (username === "test" && password === "test")
       dispatch(authActions.login());
