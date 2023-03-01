@@ -17,12 +17,12 @@ const Auth = () => {
     console.log(password);
   };
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    // dispatch(authActions.login());
     e.preventDefault();
-    if (username === "test" && password === "test")
-      dispatch(authActions.login());
-    else alert("username atau password salah");
+    dispatch(authActions.login());
+    // e.preventDefault();
+    // if (username === "test" && password === "test")
+    //   dispatch(authActions.login());
+    // else alert("username atau password salah");
   };
   return (
     <div className="container">

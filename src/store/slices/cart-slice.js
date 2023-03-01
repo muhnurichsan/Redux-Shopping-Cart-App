@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { uiActions } from "./ui-slice";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -43,6 +44,46 @@ const cartSlice = createSlice({
     },
   },
 });
+
+export const sendCartData = (cart) => {
+  return async (dispatch) => {
+    dispatch(
+      uiActions.showNotification({
+        open: true,
+        type: "warning",
+        message: "Sending Request",
+      })
+    );
+    const sendRequest = async () => {
+      const res = await fetch(
+        `https://redux-http-85257-default-rtdb.asia-southeast1.firebasedatabase.app/cartItem.json`,
+        {
+          method: "PUT",
+          body: JSON.stringify(cart),
+        }
+      );
+      dispatch(
+        uiActions.showNotification({
+          type: "success",
+          message: "Success Sending Request",
+          open: true,
+        })
+      );
+      res.json();
+    };
+    try {
+      await sendRequest();
+    } catch (err) {
+      dispatch(
+        uiActions.showNotification({
+          type: "error",
+          message: err,
+          open: true,
+        })
+      );
+    }
+  };
+};
 
 export const cartActions = cartSlice.actions;
 
