@@ -5,7 +5,6 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import store from "./store";
-import "./firebase-config";
 
 ReactDOM.render(
   <React.StrictMode>
